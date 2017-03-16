@@ -15,7 +15,7 @@ var TodoForm = React.createClass({
   },
   render: function () {
     return (
-      <div>
+      <div className="container__footer">
         <form ref="form" onSubmit={this.onSubmit} className="to-do-form">
 
           <input type="text" ref="entry" placeholder="Please enter a to-do entry"/>
