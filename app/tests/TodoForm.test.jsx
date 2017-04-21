@@ -4,7 +4,7 @@ var expect = require('expect');
 var $ = require('jQuery');
 var TestUtils = require('react-addons-test-utils');
 
-var TodoForm = require('TodoForm');
+var {TodoForm} = require('TodoForm');
 
 describe('TodoForm', () => {
 
@@ -14,20 +14,26 @@ describe('TodoForm', () => {
 
   });
 
-  it('should call onAddTodo if valid values entered', () => {
+  it('should dispatch ADD_TODO when valid todo text', () => {
+
+    var todoText = 'Check mail';
+    var action = {
+      type: 'ADD_TODO',
+      text: todoText
+    }
 
     var spy = expect.createSpy();
-    var todoForm = TestUtils.renderIntoDocument(<TodoForm onAddTodo={spy}/>);
+    var todoForm = TestUtils.renderIntoDocument(<TodoForm dispatch={spy}/>);
     var $el = $(ReactDOM.findDOMNode(todoForm));
 
-    todoForm.refs.entry.value = '109';
+    todoForm.refs.entry.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
 
-    expect(spy).toHaveBeenCalledWith('109');
+    expect(spy).toHaveBeenCalledWith(action);
 
   });
 
-  it('should not call onAddTodo if invalid values entered', () => {
+  it('should not dispatch ADD_TODO when invalid todo text', () => {
 
     var spy = expect.createSpy();
     var todoForm = TestUtils.renderIntoDocument(<TodoForm onAddTodo={spy}/>);

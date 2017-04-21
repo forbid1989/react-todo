@@ -48,6 +48,8 @@ export var todosReducer = (state = [], action) => {
             completedAt: completedAt
           };
 
+        } else {
+          return todo;
         }
 
       });
