@@ -92,7 +92,14 @@ export var startToggleTodo = (id, completed) => {
       dispatch(updateTodo(id, updates));
     });
   };
-}
+};
+
+export var login = (uid) => {
+  return {
+    type: 'LOGIN',
+    uid: uid
+  };
+};
 
 export var startLogin = () => {
   return (dispatch, getState) => {
@@ -101,6 +108,12 @@ export var startLogin = () => {
     }, (error) => {
       console.log('Unable to auth', error);
     });
+  };
+};
+
+export var logout = (uid) => {
+  return {
+    type: 'LOGOUT',
   };
 };
 
