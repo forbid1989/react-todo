@@ -119,6 +119,7 @@ describe('Actions', () => {
           completed: false,
           createdAt: 2346
         });
+
       }).then(() => done()).catch(done);
     });
 
